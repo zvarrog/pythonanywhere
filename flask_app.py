@@ -9,12 +9,12 @@ app = Flask(__name__)
 @app.route("/")
 def hello_world():
     tz = pytz.timezone("Europe/Moscow")
-    current_time = datetime.now(tz).strftime("%Y-%m-%d %H:%M:%S")
+    current_time = datetime.now(tz)
 
     html_content = f"""
     <html>
         <head>
-            <title>Тестовое приложение</title>
+            <title>Обновленное тестовое приложение</title>
             <style>
                 body {{
                     font-family: Arial, sans-serif;
@@ -34,19 +34,38 @@ def hello_world():
                     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
                 }}
                 h1 {{
-                    color: #0056b3;
+                    color: #28a745;
+                }}
+                #time {{
+                    font-weight: bold;
+                    font-size: 1.2em;
                 }}
             </style>
         </head>
         <body>
             <div class="container">
-                <p>Текущее время: {current_time}</p>
+                <p>Текущее время (Москва): <span id="time"></span></p>
             </div>
+
+            <script>
+                let serverTime = new Date("{current_time.isoformat()}");
+
+                function updateTime() {{
+                    serverTime.setSeconds(serverTime.getSeconds() + 1);
+
+                    let hours = serverTime.getHours().toString().padStart(2, '0');
+                    let minutes = serverTime.getMinutes().toString().padStart(2, '0');
+                    let seconds = serverTime.getSeconds().toString().padStart(2, '0');
+                    let timeString = `${{hours}}:${{minutes}}:${{seconds}}`;
+                    
+                    document.getElementById('time').textContent = timeString;
+                }}
+
+                setInterval(updateTime, 1000);
+                
+                updateTime(); 
+            </script>
         </body>
     </html>
     """
     return html_content
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
