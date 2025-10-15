@@ -14,7 +14,7 @@ def hello_world():
     html_content = f"""
     <html>
         <head>
-            <title>Обновленное тестовое приложение</title>
+            <title>тестовое приложение</title>
             <style>
                 body {{
                     font-family: Arial, sans-serif;
@@ -44,7 +44,7 @@ def hello_world():
         </head>
         <body>
             <div class="container">
-                <p>Текущее время (Москва): <span id="time"></span></p>
+                <p>Текущее время: <span id="time"></span></p>
             </div>
 
             <script>
