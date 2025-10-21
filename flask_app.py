@@ -30,7 +30,7 @@ def hello_world():
                     text-align: center;
                     padding: 40px;
                     border-radius: 10px;
-                    background-color: #fff;
+                    background-color: #111;
                     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
                 }}
                 h1 {{
@@ -38,7 +38,7 @@ def hello_world():
                 }}
                 #time {{
                     font-weight: bold;
-                    font-size: 1.2em;
+                    font-size: 5.2em;
                 }}
             </style>
         </head>
